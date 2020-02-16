@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Capstone Design</title>
+        <style>
+            .result_data {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h2><b><ins>Result</ins></b></h2>
+        <br>
+            <div class="result_data">
+                <table border="3">
+                    <tr>
+                        <td>Name</td>
+                        <td><form autocomplete='off'><input type='text' id='name' /></form></td>
+                    </tr> <!-- Name/text -->
+                    <tr>
+                        <td>Room Number</td>
+                        <td><form autocomplete='off'><input type='text' id='room_number' /></form></td>
+                    </tr> <!-- Room Number/text -->
+                    <tr>
+                        <td>Drug Type</td>
+                        <td><select><option>NS</option><option>DS</option><option>DW</option><option>HS</option><option>HD</option><option>FS</option><option>Protein amino acids</option><option>Antibiotic</option></select></td>
+                    </tr> <!-- Drug Type/select -->
+                    <tr>
+                        <td>Total Injection Volume[mL]</td>
+                        <td>
+                            <input type="text" id="volume">
+                            <script>
+                                var vol = volume;
+                                document.write(vol);
+                            </script>
+                        </td>
+                    </tr> <!-- Total Injection Volume[mL]/text -->
+                    <tr>
+                        <td>Total Injection Time[Hour]</td>
+                        <td>
+                            <input type="text" id="time">
+                            <script>
+                                var t = volume;
+                                document.write(t);
+                            </script>
+                        </td>
+                    </tr> <!-- Total Injection Time[Hour]/text -->
+                    <tr>
+                        <td>gtt[gtt/min]</td>
+                        <td>
+                            <script>
+                                var data1 = (vol)/(t);
+                                document.write(data1);
+                            </script></td>
+                    </tr> <!-- gtt[gtt/min]/calculated data -->
+                    <tr>
+                        <td>Data[gtt/min]</td>
+                        <td>
+                            <script type="text/javascript">
+                                var data2 = 100;
+                                document.write(data2);
+                            </script>
+                        </td>
+                    </tr> <!-- Data[gtt/min]/experimental data -->
+                    <tr>
+                        <td>Error[%]</td>
+                        <td>
+                            <script>
+                                var data3 = (abs(data1-data2)/(data1))*100;
+                                document.write(data3);
+                            </script>
+                        </td>
+                    </tr> <!-- Error[%]/calculated data -->
+                    <tr>
+                        <td>Unusual Finding</td>
+                        <td><form><textarea></textarea></form></td>
+                    </tr> <!-- Unusual Finding/text area -->
+                </table>
+            </div>
+
+        <script>
+            var data1, data2, data3 = 0;
+            data2 = 100; //실험에서 받아오는 데이터 값(실험값)
+            data1 = (total_injection_volume)*((20)/(total_injection_time));
+            data2 = (60)/(data1);
+            data3 = (abs((data1)-(data2))/(data1))*100;
+
+            function volume() {
+                const button = document.querySelector('button');
+                let name = prompt('What is the volume?');
+            }
+        </script>
+    </body>
+</html>
